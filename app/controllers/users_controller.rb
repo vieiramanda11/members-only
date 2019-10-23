@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash.now[:success] = "Welcome to the Members Only!"
       redirect_to root_path
     else
       render 'new'
