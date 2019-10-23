@@ -1,24 +1,27 @@
-# README
+# Members Only
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+This is part of the Authentication Project in The Odin Project’s Ruby on Rails Curriculum. Find it at [The Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/authentication)
 
-Things you may want to cover:
+## Authors:
+* [Ansar](https://github.com/ansaryergesh)
+* [Amanda](https://github.com/vieiramanda11)
 
-* Ruby version
+## Getting started
 
-* System dependencies
+To get started with the app, clone the repo and then install the needed gems:
 
-* Configuration
+```
+$ bundle install --without production
+```
 
-* Database creation
+Next, migrate the database:
 
-* Database initialization
+```
+$ rails db:migrate
+```
 
-* How to run the test suite
+You are ready to run the app in a local server:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ rails server
