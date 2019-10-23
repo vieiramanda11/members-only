@@ -1,0 +1,13 @@
+<% provide(:title, "Create a new post") %>
+<h1>Create a new post</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@micropost) do |f| %>
+      <%= f.label :body %>
+      <%= f.text_field :body, class: 'form-control' %>
+      <%= f.label :content %>
+      <%= f.text_area :content, class: 'form-control' %>
+      <%= f.submit "Post", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

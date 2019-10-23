@@ -1,15 +1,28 @@
 class MicropostsController < ApplicationController
+    before_action :logged_in?, only: [:new, :create]
+
     def new
+        @micropost = Micropost.new
     end
 
     def create
+        @micropost = current_user.microposts.build(micropost_params)
+        if @micropost.save
+            flash[:success] = "Micropost created!"
+            redirect_to root_url
+        else
+            render 'new'
+        end
     end
 
     def index
-        @user = User.find(params[:id])
-        @microposts = @user.microposts.paginate(page: params[])
+        # @user = User.find(params[:id])
+        # @microposts = @user.microposts.paginate(page: params[])
+        @microposts = Micropost.all
     end
- 
- 
 
+    private
+        def micropost_params
+            params.require(:micropost).permit(:body, :content)
+        end
 end
