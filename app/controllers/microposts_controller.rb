@@ -1,28 +1,31 @@
+# frozen_string_literal: true
+
 class MicropostsController < ApplicationController
-    before_action :logged_in?, only: [:new, :create]
+  before_action :logged_in?, only: %i[new create]
 
-    def new
-        @micropost = Micropost.new
+  def new
+    @micropost = Micropost.new
+  end
+
+  def create
+    @micropost = current_user.microposts.build(micropost_params)
+    if @micropost.save
+      flash.now[:success] = 'Micropost created!'
+      redirect_to root_url
+    else
+      render 'new'
     end
+  end
 
-    def create
-        @micropost = current_user.microposts.build(micropost_params)
-        if @micropost.save
-            flash.now[:success] = "Micropost created!"
-            redirect_to root_url
-        else
-            render 'new'
-        end
-    end
+  def index
+    # @user = User.find(params[:id])
+    # @microposts = @user.microposts.paginate(page: params[])
+    @microposts = Micropost.all
+  end
 
-    def index
-        # @user = User.find(params[:id])
-        # @microposts = @user.microposts.paginate(page: params[])
-        @microposts = Micropost.all
-    end
+  private
 
-    private
-        def micropost_params
-            params.require(:micropost).permit(:body, :content)
-        end
+  def micropost_params
+    params.require(:micropost).permit(:body, :content)
+  end
 end
