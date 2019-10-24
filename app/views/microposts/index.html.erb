@@ -1,0 +1,18 @@
+
+<div class="row">
+    <div class="col-md-8">
+<ul>
+  <% @microposts.each do |post| %>
+	  <li>
+			Title: <%= post.body %><br>
+			<% if logged_in? %>
+			  <% user = User.find(post.user_id) %>
+				Author: <%= user.name %><br>
+			<% end %>
+			Post: <%= post.content %>
+		</li><br>
+	<% end %>
+</ul>
+
+    </div>
+</div>

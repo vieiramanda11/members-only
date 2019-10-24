@@ -1,5 +1,15 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'sessions/new'
+  root 'microposts#index'
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/index', to: 'microposts#index'
+  get '/micropost', to: 'microposts#new'
+  resources :users
+  resources :microposts, only: [:create, :index, :new]
 end
