@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   get '/index', to: 'microposts#index'
   get '/micropost', to: 'microposts#new'
   resources :users
-  resources :microposts, only: [:create, :index, :destroy]
+  resources :microposts, only: [:create, :index, :new]
 end

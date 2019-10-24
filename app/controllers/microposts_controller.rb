@@ -18,8 +18,6 @@ class MicropostsController < ApplicationController
   end
 
   def index
-    # @user = User.find(params[:id])
-    # @microposts = @user.microposts.paginate(page: params[])
     @microposts = Micropost.all
   end
 
